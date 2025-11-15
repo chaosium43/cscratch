@@ -1,0 +1,4 @@
+1. Scratch always clamps the position of sprites such that there will be at least a 16x16 area sticking out into the stage where a sprite is located provided the sprite is large enough
+1a. If Scratch cannot ensure this, then it clamps the position of the sprite to the hard edge (-240 or 240 for x, -180 or 180 for y)
+2. Scratch will try to make sprites take up at least a 5x5 area when doing scaling
+3. All sprites are limited to a maximum size of 720x540

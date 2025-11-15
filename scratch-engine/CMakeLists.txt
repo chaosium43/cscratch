@@ -1,0 +1,25 @@
+project(scratch-engine)
+add_executable(scratch-engine)
+target_include_directories(
+    scratch-engine
+    PUBLIC
+    inc
+)
+target_sources(
+    scratch-engine
+    PRIVATE
+    core/scratch-engine.cpp
+    core/render-job.cpp
+    core/input-job.cpp
+    core/scratch-util.cpp
+    core/costume.cpp
+    core/sprite.cpp
+)
+target_link_libraries(
+    scratch-engine
+    PRIVATE
+    SDL3::SDL3
+    SDL3_image::SDL3_image
+    SDL3_ttf::SDL3_ttf
+    SDL3_mixer::SDL3_mixer
+)
