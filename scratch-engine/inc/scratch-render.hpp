@@ -5,7 +5,7 @@ Description: Defines all the classes and structures necessary for CScratch rende
 
 #pragma once
 
-#include <SDL3/SDL.h>
+#include <raylib.h>
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -18,10 +18,10 @@ namespace scratch
     class costume
     {
         public:
-            costume(std::wstring costume_name, SDL_Texture* p_texture, double rotation_center_x, double rotation_center_y, double width, double height);
+            costume(std::wstring costume_name, Texture2D texture, double rotation_center_x, double rotation_center_y, double width, double height);
             ~costume();
             std::wstring get_costume_name();
-            SDL_Texture* get_texture();
+            Texture2D get_texture();
             double get_rotation_center_x();
             double get_rotation_center_y();
             double get_width();
@@ -29,7 +29,7 @@ namespace scratch
 
         private:
             std::wstring m_costume_name;
-            SDL_Texture* mp_texture;
+            Texture2D m_texture;
             double m_rotation_center_x;
             double m_rotation_center_y;
             double m_width; // need native scratch width and height values since images will be loaded at the largest resolution available to ensure image quality

@@ -13,6 +13,8 @@ sprite::sprite(std::wstring name)
     m_name = name;
     mpp_bottom_layer_addy = nullptr;
     mpp_top_layer_addy = nullptr;
+    mp_above = nullptr;
+    mp_below = nullptr;
     m_is_clone = false;
 
     m_costume_number = 0;

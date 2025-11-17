@@ -18,8 +18,5 @@ target_sources(
 target_link_libraries(
     scratch-engine
     PRIVATE
-    SDL3::SDL3
-    SDL3_image::SDL3_image
-    SDL3_ttf::SDL3_ttf
-    SDL3_mixer::SDL3_mixer
+    raylib
 )

@@ -16,36 +16,29 @@ input_job::input_job(input_state* p_key_pressed)
 }
 job_status input_job::run()
 {
-    SDL_Event event = {};
-
     if (mp_key_pressed == nullptr)
     {
         return job_status::error;
+    }
+    if (WindowShouldClose())
+    {
+        return job_status::signal_engine_terminate;
     }
 
     // marking keys as no longer being freshly pressed so that the event scheduler doesn't create duplicate threads for the keys
     for (int i = 0; i < SCRATCHK_MAX_KEYCODE; ++i)
     {
-        if (static_cast<uint8_t>(mp_key_pressed[i]))
+        if (IsKeyPressedRepeat(i))
+        {
+            mp_key_pressed[i] = input_state::fresh_pressed;
+        }
+        else if (IsKeyPressed(i))
         {
             mp_key_pressed[i] = input_state::pressed;
         }
-    }
-
-    while (SDL_PollEvent(&event)) // draining the event queue
-    {
-        switch (event.type)
+        else
         {
-            case SDL_EVENT_QUIT:
-                return job_status::signal_engine_terminate;
-            case SDL_EVENT_KEY_DOWN:
-                mp_key_pressed[convert_sdl_keycode(event.key.key)] = input_state::fresh_pressed;
-                break;
-            case SDL_EVENT_KEY_UP:
-                mp_key_pressed[convert_sdl_keycode(event.key.key)] = input_state::unpressed;
-                break;
-            default:
-                break;
+            mp_key_pressed[i] = input_state::unpressed;
         }
     }
     return job_status::ok;

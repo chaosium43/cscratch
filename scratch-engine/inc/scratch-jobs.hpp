@@ -5,7 +5,7 @@ Description: Contains all jobs that CScratch may run
 
 #pragma once
 
-#include <SDL3/SDL.h>
+#include <raylib.h>
 #include "scratch-enums.hpp"
 #include "scratch-render.hpp"
 
@@ -32,11 +32,13 @@ namespace scratch
     class render_job : public engine_job // job for drawing pixels onto the screen
     {
         public:
-            render_job(SDL_Renderer* p_renderer, scratch::sprite** pp_sprite_list);
+            render_job(scratch::sprite** pp_sprite_list);
+            ~render_job();
             scratch::job_status run() override;
         private:
             void draw_sprite(scratch::sprite* p_sprite);
-            SDL_Renderer* mp_renderer;
+            void present_stage();
             scratch::sprite** mpp_sprite_list;
+            RenderTexture2D m_stage_texture;
     };
 }

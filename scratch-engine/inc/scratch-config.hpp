@@ -7,10 +7,8 @@ Description: Contains all defines for global constants in CScratch
 
 #define CORE_ENGINE_JOB_COUNT 2
 
-#define SCRATCHK_SCANCODE_MASK 0x400
-#define SCRATCHK_EXTENDED_MASK 0x200
-#define SCRATCHK_USABLE_BYTES_MASK 0xfff
-#define SCRATCHK_MAX_KEYCODE 0x1000
+#define TARGET_FRAMERATE 60
+#define SCRATCHK_MAX_KEYCODE 337 // KEY_KP_EQUAL + 1
 
 #define STAGE_MIN_X (-240)
 #define STAGE_MAX_X 240
@@ -35,3 +33,6 @@ Description: Contains all defines for global constants in CScratch
 #define SPRITE_DEFAULT_SIZE 100.0
 #define SPRITE_MAX_SIZE_X_FLOAT 720.0
 #define SPRITE_MAX_SIZE_Y_FLOAT 540.0
+
+#define COLOR_BLACK {0, 0, 0, 255}
+#define COLOR_WHITE {255, 255, 255, 255}
